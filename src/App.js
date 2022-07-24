@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import NavBar from "./components/NavBar";
+import News from "./components/News";
+import PropTypes from "prop-types";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+  render() {
+    return (
+      //  <NavBar category={"sports"} 
+      //  <News country="in" category={"sports"}/>
+      <BrowserRouter>
+      <NavBar/>
+      <div className="text-center heartBeat" ><h1><marquee  style={{color:'#c89666'}} >Abtak-Headlines</marquee></h1></div>
+        <Routes>
+        <Route path="/" element={<News country="in" category="general"/>}/>
+        <Route path="/sports" element={<News country="in" category="sports"/>}/>
+        <Route path="/entertainment" element={<News country="in" category="entertainment"/>}/>
+        <Route path="/science" element={<News country="in" category="science"/>}/>
+        <Route path="/technology" element={<News country="in" category="technology"/>}/>
+        <Route exact path="/business" element={<News country="in" category="business"/>}/>
+        <Route path="/general" element={<News country="in" category="general"/>}/>
+        <Route path="/health" element={<News country="in" category="health"/>}/>
+        </Routes>
+        
+       
+      </BrowserRouter>
+    );
+  }
 }
-
-export default App;
